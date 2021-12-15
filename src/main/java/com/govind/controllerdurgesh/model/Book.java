@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="books")
 public class Book {
@@ -20,9 +22,9 @@ public class Book {
 	private String title;
 	
 	@OneToOne(cascade = CascadeType.ALL)  //Unidirectional
+	@JsonManagedReference
 	private Author author;
 	public Book(int id, String title, Author author) {
-		super();
 		this.id = id;
 		this.title = title;
 		this.author = author;
